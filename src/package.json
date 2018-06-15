@@ -1,0 +1,27 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "Contact List Exercise",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/williamkimball/contact_list.git"
+  },
+  "author": "William Kimball",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/williamkimball/contact_list/issues"
+  },
+  "homepage": "https://github.com/williamkimball/contact_list#readme",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-browserify": "^5.3.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-uglify-es": "^3.3.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-eslint": "^20.2.0"
+  }
+}
