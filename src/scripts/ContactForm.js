@@ -1,10 +1,12 @@
 const Database = require("./ContactCollection");
 const Contact = require("./Contact");
+let data = Database.loadDatabase("contacts")
 
 //function that takes the dataset one wants to look at (or defaults to everything) and creates sections for them and prints to the DOM
-let makeData = (dataSet) => {
+let makeData = (data) => {
     document.querySelector("#myStuff").innerHTML = ""; //clears the current contents of the DOM
 
+    console.log(data)
     const fragment = document.createElement("div"); //create a document fragment so there is only one write event to the DOM
     fragment.textContent = "Contact List"
 
@@ -18,19 +20,19 @@ let makeData = (dataSet) => {
     }
 
     //function that makes a section with paragraphs where the content is equal to the current iteration in the database
-    const runSectionMaker = (dataSet) => {
-        console.log(dataSet)
-        for (key in dataSet) {
+    const runSectionMaker = (data) => {
+        // console.log(data)
+        for (key in data) {
             let para1 = mkPara();
             let para2 = mkPara();
             let para3 = mkPara();
             let para4 = mkPara();
             let sec = mkSec();
 
-            para1.textContent = `Name: ${dataSet[key].name}`
-            para2.textContent = `Phone: ${dataSet[key].phoneNumber}`;
-            para3.textContent = `Address: ${dataSet[key].address}`;
-            para4.textContent = `Contact Number: ${dataSet[key].contactNum}`
+            para1.textContent = `Name: ${data[key].name}`
+            para2.textContent = `Phone: ${data[key].phoneNumber}`;
+            para3.textContent = `Address: ${data[key].address}`;
+            para4.textContent = `Contact Number: ${data[key].contactNum}`
             sec.appendChild(para1);
             sec.appendChild(para2);
             sec.appendChild(para3);
@@ -38,16 +40,14 @@ let makeData = (dataSet) => {
             fragment.appendChild(sec)
         } document.querySelector("#myStuff").appendChild(fragment)
     }
-    runSectionMaker(dataSet);
+    runSectionMaker(data);
 
 }
 
-// makeData(Database.contactDatabase);
 
-Database.loadDatabase(Database.contactDatabase);
-console.log(Database.contactDatabase)
+
 //default on page load is to print everything
-makeData(Database.contactDatabase);
+makeData(data);
 
 document.querySelector("#addItem").addEventListener("click", function () {
     let nameItem = document.querySelector("#contactName").value;
