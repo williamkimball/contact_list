@@ -20,12 +20,4 @@ addContact = function (name, phone, address) {
     Database.contactDatabase[Contact.contactNum] = Contact;
 }
 
-
-// addContact("Jim", 1233211234, "Scranton, PA");
-// addContact("Jordan", 1233211234, "Under a bridge");
-// addContact("Jennifer", 75937271939, "NCC-1701 Enterprise-D, with Data");
-// addContact("William", 9844191232, "Texas");
-
-Database.saveDatabase(Database.contactDatabase, "contacts");
-
 module.exports = {addContact}

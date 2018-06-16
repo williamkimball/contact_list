@@ -1,21 +1,9 @@
 const Database = require("./ContactCollection");
 const Contact = require("./Contact");
-const loadDatabase = (contactDatabase) => {
-    // Get the string version of the database
-    const databaseString = localStorage.getItem(Database.contactDatabase)
-
-    // Use JSON.parse() to convert the string back into an object
-    return JSON.parse(databaseString)
-}
 
 //function that takes the dataset one wants to look at (or defaults to everything) and creates sections for them and prints to the DOM
 let makeData = (dataSet) => {
-    loadDatabase(Database.contactDatabase);
     document.querySelector("#myStuff").innerHTML = ""; //clears the current contents of the DOM
-
-    // //put the database into a variable
-    // let run = Database.loadDatabase("contacts");
-
 
     const fragment = document.createElement("div"); //create a document fragment so there is only one write event to the DOM
     fragment.textContent = "Contact List"
@@ -29,7 +17,7 @@ let makeData = (dataSet) => {
         return document.createElement("section")
     }
 
-    //function that a section with paragraphs where the content is equal to the current iteration in the database
+    //function that makes a section with paragraphs where the content is equal to the current iteration in the database
     const runSectionMaker = (dataSet) => {
         console.log(dataSet)
         for (key in dataSet) {
@@ -56,10 +44,8 @@ let makeData = (dataSet) => {
 
 // makeData(Database.contactDatabase);
 
-
-
-loadDatabase(Database.contactDatabase);
-
+Database.loadDatabase(Database.contactDatabase);
+console.log(Database.contactDatabase)
 //default on page load is to print everything
 makeData(Database.contactDatabase);
 
@@ -75,3 +61,5 @@ document.querySelector("#addItem").addEventListener("click", function () {
     Database.saveDatabase(Database.contactDatabase, "contacts")
     makeData(Database.contactDatabase);
 });
+
+module.exports = makeData;
