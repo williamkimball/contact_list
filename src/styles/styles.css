@@ -2,3 +2,7 @@ section {
     border: solid black 2px;
     margin: 1%;
 }
+
+div {
+    border: solid black 2px;
+}

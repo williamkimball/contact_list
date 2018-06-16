@@ -1,7 +1,7 @@
 const Database = require("./ContactCollection");
-const Contact = require("./Contact");
-let data = Database.loadDatabase("contacts")
+const Contact = require("./Contact")
 
+let data = Database.loadDatabase("contacts")
 //function that takes the dataset one wants to look at (or defaults to everything) and creates sections for them and prints to the DOM
 let makeData = (data) => {
     document.querySelector("#myStuff").innerHTML = ""; //clears the current contents of the DOM
@@ -21,7 +21,6 @@ let makeData = (data) => {
 
     //function that makes a section with paragraphs where the content is equal to the current iteration in the database
     const runSectionMaker = (data) => {
-        // console.log(data)
         for (key in data) {
             let para1 = mkPara();
             let para2 = mkPara();
@@ -46,20 +45,20 @@ let makeData = (data) => {
 
 
 
-//default on page load is to print everything
+// //default on page load is to print everything
 makeData(data);
 
 document.querySelector("#addItem").addEventListener("click", function () {
     let nameItem = document.querySelector("#contactName").value;
-    console.log(nameItem);
     let addressItem = document.querySelector("#contactAddress").value;
     let phoneItem = document.querySelector("#contactPhone").value;
 
 
-    addContact(nameItem, addressItem, phoneItem);
+    Contact.addContact(nameItem, addressItem, phoneItem);
 
-    Database.saveDatabase(Database.contactDatabase, "contacts")
-    makeData(Database.contactDatabase);
+    Database.saveDatabase(Database.contactDatabase, "contacts");
+    let data = Database.loadDatabase("contacts");
+    makeData(data);
 });
 
 module.exports = makeData;
