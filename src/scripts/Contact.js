@@ -16,8 +16,10 @@ addContact = function (name, phone, address) {
     Contact.name = name;
     Contact.phoneNumber = phone;
     Contact.address = address;
-    Contact.contactNum = contactNo()
-    Database.contactDatabase[Contact.contactNum] = Contact;
+    Contact.contactNum = contactNo();
+    let data = Database.loadDatabase("contacts");
+    data[Contact.contactNum] = Contact;
+    Database.saveDatabase(data, "contacts");
 }
 
 module.exports = {addContact}

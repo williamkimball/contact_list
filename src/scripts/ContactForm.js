@@ -56,7 +56,7 @@ document.querySelector("#addItem").addEventListener("click", function () {
 
     Contact.addContact(nameItem, addressItem, phoneItem);
 
-    Database.saveDatabase(Database.contactDatabase, "contacts");
+
     let data = Database.loadDatabase("contacts");
     makeData(data);
 });
